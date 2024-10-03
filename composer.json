@@ -1,0 +1,35 @@
+{
+    "name": "hedgehoglab-engineering/laravel-dto-tools",
+    "description": "A set of DTO Tools for Laravel.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "HedgehoglabEngineering\\LaravelDto\\": "src/",
+            "HedgehoglabEngineering\\Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "laravel/framework": "^9.1 || ^10.0",
+        "netsells/hash-model-ids": "^1.1",
+        "php": "^8.2"
+    },
+    "require-dev": {
+        "mockery/mockery": "^1.5",
+        "netsells/code-standards-laravel": "^1.1",
+        "phpunit/phpunit": "^10.0"
+    },
+    "scripts": {
+        "format": "php-cs-fixer fix src && php-cs-fixer fix tests",
+        "analyse": "phpstan analyse src tests",
+        "test": "phpunit"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "HedgehoglabEngineering\\LaravelDto\\Providers\\DtoToolsServiceProvider"
+            ]
+        }
+    }
+}
