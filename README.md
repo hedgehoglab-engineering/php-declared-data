@@ -1,13 +1,13 @@
 
-# Laravel data Tools
+# Laravel Data Tools
 
-This package provides a set of tools to facilitate the creation and handling of Data Transfer Objects (data) in Laravel applications. It offers attributes and interfaces that help in transforming, validating, and mapping data efficiently.
+This package provides a set of tools to facilitate the creation and handling of Data Transfer in Laravel applications. It offers attributes and interfaces that help in transforming, validating, and mapping data efficiently.
 
 ## Table of Contents
 
 - [Installation](#installation)
 - [Usage](#usage)
-    - [Creating data Classes](#creating-dto-classes)
+    - [Creating Data Classes](#creating-data-classes)
     - [Interfaces](#interfaces)
         - [ResolvableData](#resolvabledata)
         - [LenientData](#lenientdata)
@@ -21,7 +21,7 @@ This package provides a set of tools to facilitate the creation and handling of 
         - [MapArgumentName](#mapargumentname)
         - [HashedIdOf](#hashedidof)
 - [Examples](#examples)
-    - [Using Attributes in data](#using-attributes-in-dtos)
+    - [Using Attributes in Data Classes](#using-attributes-in-data-classes)
 
 - [Testing](#testing)
 - [Code Formatting](#code-formatting)
@@ -38,7 +38,7 @@ composer require hedgehoglab-engineering/laravel-dto
 
 ## Usage
 
-### Creating data Classes
+### Creating Data Classes
 
 To create a data object, extend the `AbstractDeclaredData` class and define your properties. You can use PHP 8 attributes to specify transformations or mappings.
 
@@ -174,7 +174,7 @@ public readonly int $userId;
 
 ## Examples
 
-### Using Attributes in data
+### Using Attributes in Data Classes
 
 Here's an example of a data class using various attributes:
 
