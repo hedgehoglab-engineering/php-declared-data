@@ -4,7 +4,7 @@ namespace HedgehoglabEngineering\Tests\Unit\Attributes;
 
 use Carbon\Carbon;
 use DateTimeZone;
-use HedgehoglabEngineering\LaravelDto\Attributes\DateTimeFromFormat;
+use HedgehoglabEngineering\LaravelDataTools\Attributes\DateTimeFromFormat;
 use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;

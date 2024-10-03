@@ -2,8 +2,8 @@
 
 namespace HedgehoglabEngineering\Tests\Fixtures\Data;
 
-use HedgehoglabEngineering\LaravelDto\AbstractDeclaredData;
-use HedgehoglabEngineering\LaravelDto\Contracts\LenientData;
+use HedgehoglabEngineering\LaravelDataTools\AbstractDeclaredData;
+use HedgehoglabEngineering\LaravelDataTools\Contracts\LenientData;
 
 class LenientTestData extends AbstractDeclaredData implements LenientData
 {

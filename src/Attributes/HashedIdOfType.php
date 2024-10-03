@@ -1,6 +1,6 @@
 <?php
 
-namespace HedgehoglabEngineering\LaravelDto\Attributes;
+namespace HedgehoglabEngineering\LaravelDataTools\Attributes;
 
 enum HashedIdOfType: string
 {

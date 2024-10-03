@@ -1,13 +1,13 @@
 <?php
 
-namespace HedgehoglabEngineering\LaravelDto\Factories;
+namespace HedgehoglabEngineering\LaravelDataTools\Factories;
 
-use HedgehoglabEngineering\LaravelDto\Contracts\LenientData;
-use HedgehoglabEngineering\LaravelDto\Contracts\ResolvableData;
-use HedgehoglabEngineering\LaravelDto\Contracts\SparseData;
-use HedgehoglabEngineering\LaravelDto\Filters\LenientDataFilter;
-use HedgehoglabEngineering\LaravelDto\Resolvers\ArgumentNameResolver;
-use HedgehoglabEngineering\LaravelDto\Resolvers\ArgumentResolver;
+use HedgehoglabEngineering\LaravelDataTools\Contracts\LenientData;
+use HedgehoglabEngineering\LaravelDataTools\Contracts\ResolvableData;
+use HedgehoglabEngineering\LaravelDataTools\Contracts\SparseData;
+use HedgehoglabEngineering\LaravelDataTools\Filters\LenientDataFilter;
+use HedgehoglabEngineering\LaravelDataTools\Resolvers\ArgumentNameResolver;
+use HedgehoglabEngineering\LaravelDataTools\Resolvers\ArgumentResolver;
 
 class DataFactory
 {

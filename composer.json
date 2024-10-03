@@ -1,11 +1,11 @@
 {
-    "name": "hedgehoglab-engineering/laravel-dto-tools",
-    "description": "A set of DTO Tools for Laravel.",
+    "name": "hedgehoglab-engineering/laravel-data-tools",
+    "description": "A set of data tools for Laravel.",
     "type": "library",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "HedgehoglabEngineering\\LaravelDto\\": "src/",
+            "HedgehoglabEngineering\\LaravelDataTools\\": "src/",
             "HedgehoglabEngineering\\Tests\\": "tests/"
         }
     },
@@ -28,7 +28,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "HedgehoglabEngineering\\LaravelDto\\Providers\\LaravelDtoToolsServiceProvider"
+                "HedgehoglabEngineering\\LaravelDataTools\\Providers\\LaravelDataToolsServiceProvider"
             ]
         }
     }

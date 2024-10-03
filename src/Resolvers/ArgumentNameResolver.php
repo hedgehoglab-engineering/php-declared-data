@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace HedgehoglabEngineering\LaravelDto\Resolvers;
+namespace HedgehoglabEngineering\LaravelDataTools\Resolvers;
 
-use HedgehoglabEngineering\LaravelDto\Attributes\MapArgumentName;
+use HedgehoglabEngineering\LaravelDataTools\Attributes\MapArgumentName;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 

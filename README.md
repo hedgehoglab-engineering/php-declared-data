@@ -1,13 +1,13 @@
 
-# Laravel DTO Tools
+# Laravel data Tools
 
-This package provides a set of tools to facilitate the creation and handling of Data Transfer Objects (DTOs) in Laravel applications. It offers attributes and interfaces that help in transforming, validating, and mapping data efficiently.
+This package provides a set of tools to facilitate the creation and handling of Data Transfer Objects (data) in Laravel applications. It offers attributes and interfaces that help in transforming, validating, and mapping data efficiently.
 
 ## Table of Contents
 
 - [Installation](#installation)
 - [Usage](#usage)
-    - [Creating DTO Classes](#creating-dto-classes)
+    - [Creating data Classes](#creating-dto-classes)
     - [Interfaces](#interfaces)
         - [ResolvableData](#resolvabledata)
         - [LenientData](#lenientdata)
@@ -21,7 +21,7 @@ This package provides a set of tools to facilitate the creation and handling of 
         - [MapArgumentName](#mapargumentname)
         - [HashedIdOf](#hashedidof)
 - [Examples](#examples)
-    - [Using Attributes in DTOs](#using-attributes-in-dtos)
+    - [Using Attributes in data](#using-attributes-in-dtos)
 
 - [Testing](#testing)
 - [Code Formatting](#code-formatting)
@@ -38,12 +38,12 @@ composer require hedgehoglab-engineering/laravel-dto
 
 ## Usage
 
-### Creating DTO Classes
+### Creating data Classes
 
-To create a DTO, extend the `AbstractDeclaredData` class and define your properties. You can use PHP 8 attributes to specify transformations or mappings.
+To create a data object, extend the `AbstractDeclaredData` class and define your properties. You can use PHP 8 attributes to specify transformations or mappings.
 
 ```php
-use HedgehoglabEngineering\LaravelDto\AbstractDeclaredData;
+use HedgehoglabEngineering\LaravelDataTools\AbstractDeclaredData;
 
 class UserData extends AbstractDeclaredData
 {
@@ -61,10 +61,10 @@ class UserData extends AbstractDeclaredData
 
 #### ResolvableData
 
-Implementing the `ResolvableData` interface allows the DTO to resolve its own properties using the specified attributes.
+Implementing the `ResolvableData` interface allows the data object to resolve its own properties using the specified attributes.
 
 ```php
-use HedgehoglabEngineering\LaravelDto\Contracts\ResolvableData;
+use HedgehoglabEngineering\LaravelDataTools\Contracts\ResolvableData;
 
 class UserData extends AbstractDeclaredData implements ResolvableData
 {
@@ -74,10 +74,10 @@ class UserData extends AbstractDeclaredData implements ResolvableData
 
 #### LenientData
 
-The `LenientData` interface makes the DTO lenient by ignoring extra properties that are not defined in the class.
+The `LenientData` interface makes the data object lenient by ignoring extra properties that are not defined in the class.
 
 ```php
-use HedgehoglabEngineering\LaravelDto\Contracts\LenientData;
+use HedgehoglabEngineering\LaravelDataTools\Contracts\LenientData;
 
 class UserData extends AbstractDeclaredData implements LenientData
 {
@@ -87,10 +87,10 @@ class UserData extends AbstractDeclaredData implements LenientData
 
 #### SparseData
 
-The `SparseData` interface allows the DTO to be instantiated without all required properties. Missing properties remain unset or `null`.
+The `SparseData` interface allows the data object to be instantiated without all required properties. Missing properties remain unset or `null`.
 
 ```php
-use HedgehoglabEngineering\LaravelDto\Contracts\SparseData;
+use HedgehoglabEngineering\LaravelDataTools\Contracts\SparseData;
 
 class UserData extends AbstractDeclaredData implements SparseData
 {
@@ -102,10 +102,10 @@ class UserData extends AbstractDeclaredData implements SparseData
 
 #### FromValidatedData
 
-The `FromValidatedData` trait provides a `fromValidatedData` method to create an instance of the DTO from validated input data.
+The `FromValidatedData` trait provides a `fromValidatedData` method to create an instance of the data from validated input data.
 
 ```php
-use HedgehoglabEngineering\LaravelDto\Traits\FromValidatedData;
+use HedgehoglabEngineering\LaravelDataTools\Traits\FromValidatedData;
 
 class UserData extends AbstractDeclaredData
 {
@@ -119,10 +119,10 @@ class UserData extends AbstractDeclaredData
 
 #### CollectionOf
 
-Transforms an array into a `Collection` of specified DTOs.
+Transforms an array into a `Collection` of specified data.
 
 ```php
-use HedgehoglabEngineering\LaravelDto\Attributes\CollectionOf;
+use HedgehoglabEngineering\LaravelDataTools\Attributes\CollectionOf;
 
 #[CollectionOf(class: PostData::class)]
 public readonly Collection $posts;
@@ -133,7 +133,7 @@ public readonly Collection $posts;
 Parses a date string into a `DateTime` object using a specified format and timezones.
 
 ```php
-use HedgehoglabEngineering\LaravelDto\Attributes\DateTimeFromFormat;
+use HedgehoglabEngineering\LaravelDataTools\Attributes\DateTimeFromFormat;
 
 #[DateTimeFromFormat('Y-m-d', 'UTC', 'America/New_York')]
 public readonly DateTimeInterface $publishedAt;
@@ -144,7 +144,7 @@ public readonly DateTimeInterface $publishedAt;
 Decodes a JSON string into a PHP array or object.
 
 ```php
-use HedgehoglabEngineering\LaravelDto\Attributes\JsonDecode;
+use HedgehoglabEngineering\LaravelDataTools\Attributes\JsonDecode;
 
 #[JsonDecode(associative: true)]
 public readonly array $settings;
@@ -152,10 +152,10 @@ public readonly array $settings;
 
 #### MapArgumentName
 
-Maps an input field name to a different property name in the DTO.
+Maps an input field name to a different property name in the data object.
 
 ```php
-use HedgehoglabEngineering\LaravelDto\Attributes\MapArgumentName;
+use HedgehoglabEngineering\LaravelDataTools\Attributes\MapArgumentName;
 
 #[MapArgumentName(name: 'first_name')]
 public string $firstName;
@@ -166,7 +166,7 @@ public string $firstName;
 Decodes a hashed ID into the original ID using the specified model class. See [Hash Model Ids](https://github.com/netsells/hash-model-ids) for more info.
 
 ```php
-use HedgehoglabEngineering\LaravelDto\Attributes\HashedIdOf;
+use HedgehoglabEngineering\LaravelDataTools\Attributes\HashedIdOf;
 
 #[HashedIdOf(User::class)]
 public readonly int $userId;
@@ -174,18 +174,18 @@ public readonly int $userId;
 
 ## Examples
 
-### Using Attributes in DTOs
+### Using Attributes in data
 
-Here's an example of a DTO class using various attributes:
+Here's an example of a data class using various attributes:
 
 ```php
-use HedgehoglabEngineering\LaravelDto\AbstractDeclaredData;
-use HedgehoglabEngineering\LaravelDto\Contracts\ResolvableData;
-use HedgehoglabEngineering\LaravelDto\Attributes\CollectionOf;
-use HedgehoglabEngineering\LaravelDto\Attributes\DateTimeFromFormat;
-use HedgehoglabEngineering\LaravelDto\Attributes\JsonDecode;
-use HedgehoglabEngineering\LaravelDto\Attributes\MapArgumentName;
-use HedgehoglabEngineering\LaravelDto\Attributes\HashedIdOf;
+use HedgehoglabEngineering\LaravelDataTools\AbstractDeclaredData;
+use HedgehoglabEngineering\LaravelDataTools\Contracts\ResolvableData;
+use HedgehoglabEngineering\LaravelDataTools\Attributes\CollectionOf;
+use HedgehoglabEngineering\LaravelDataTools\Attributes\DateTimeFromFormat;
+use HedgehoglabEngineering\LaravelDataTools\Attributes\JsonDecode;
+use HedgehoglabEngineering\LaravelDataTools\Attributes\MapArgumentName;
+use HedgehoglabEngineering\LaravelDataTools\Attributes\HashedIdOf;
 use Illuminate\Support\Collection;
 
 class PostData extends AbstractDeclaredData implements ResolvableData

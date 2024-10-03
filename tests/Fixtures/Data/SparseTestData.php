@@ -2,8 +2,8 @@
 
 namespace HedgehoglabEngineering\Tests\Fixtures\Data;
 
-use HedgehoglabEngineering\LaravelDto\AbstractDeclaredData;
-use HedgehoglabEngineering\LaravelDto\Contracts\SparseData;
+use HedgehoglabEngineering\LaravelDataTools\AbstractDeclaredData;
+use HedgehoglabEngineering\LaravelDataTools\Contracts\SparseData;
 
 class SparseTestData extends AbstractDeclaredData implements SparseData
 {

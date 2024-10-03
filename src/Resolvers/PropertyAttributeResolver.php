@@ -1,8 +1,8 @@
 <?php
 
-namespace HedgehoglabEngineering\LaravelDto\Resolvers;
+namespace HedgehoglabEngineering\LaravelDataTools\Resolvers;
 
-use HedgehoglabEngineering\LaravelDto\Contracts\ResolvableDataAttributeInterface;
+use HedgehoglabEngineering\LaravelDataTools\Contracts\ResolvableDataAttributeInterface;
 use Illuminate\Support\Collection;
 
 class PropertyAttributeResolver
@@ -34,7 +34,7 @@ class PropertyAttributeResolver
     }
 
     /**
-     * @return array<int, \HedgehoglabEngineering\LaravelDto\Contracts\ResolvableDataAttributeInterface>
+     * @return array<int, \HedgehoglabEngineering\LaravelDataTools\Contracts\ResolvableDataAttributeInterface>
      */
     private function getResolvableAttributes(): array
     {
@@ -42,7 +42,7 @@ class PropertyAttributeResolver
     }
 
     /**
-     * @return array<int, \HedgehoglabEngineering\LaravelDto\Contracts\ResolvableDataAttributeInterface>
+     * @return array<int, \HedgehoglabEngineering\LaravelDataTools\Contracts\ResolvableDataAttributeInterface>
      */
     private function getResolvedAttributes(): array
     {

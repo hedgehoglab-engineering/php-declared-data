@@ -1,13 +1,13 @@
 <?php
 
-namespace HedgehoglabEngineering\LaravelDto;
+namespace HedgehoglabEngineering\LaravelDataTools;
 
-use HedgehoglabEngineering\LaravelDto\Behaviours\ArraysData;
-use HedgehoglabEngineering\LaravelDto\Behaviours\CollectsData;
-use HedgehoglabEngineering\LaravelDto\Behaviours\CreatesData;
-use HedgehoglabEngineering\LaravelDto\Behaviours\DeclaresData;
-use HedgehoglabEngineering\LaravelDto\Contracts\CollectableData;
-use HedgehoglabEngineering\LaravelDto\Contracts\CreatableData;
+use HedgehoglabEngineering\LaravelDataTools\Behaviours\ArraysData;
+use HedgehoglabEngineering\LaravelDataTools\Behaviours\CollectsData;
+use HedgehoglabEngineering\LaravelDataTools\Behaviours\CreatesData;
+use HedgehoglabEngineering\LaravelDataTools\Behaviours\DeclaresData;
+use HedgehoglabEngineering\LaravelDataTools\Contracts\CollectableData;
+use HedgehoglabEngineering\LaravelDataTools\Contracts\CreatableData;
 use Illuminate\Contracts\Support\Arrayable;
 
 abstract class AbstractDeclaredData implements Arrayable, CollectableData, CreatableData

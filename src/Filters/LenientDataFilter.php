@@ -1,6 +1,6 @@
 <?php
 
-namespace HedgehoglabEngineering\LaravelDto\Filters;
+namespace HedgehoglabEngineering\LaravelDataTools\Filters;
 
 use Illuminate\Support\Collection;
 

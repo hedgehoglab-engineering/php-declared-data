@@ -1,9 +1,9 @@
 <?php
 
-namespace HedgehoglabEngineering\LaravelDto\Attributes;
+namespace HedgehoglabEngineering\LaravelDataTools\Attributes;
 
-use HedgehoglabEngineering\LaravelDto\Contracts\ResolvableDataAttributeInterface;
-use HedgehoglabEngineering\LaravelDto\Resolvers\DeferredAttributeResolver;
+use HedgehoglabEngineering\LaravelDataTools\Contracts\ResolvableDataAttributeInterface;
+use HedgehoglabEngineering\LaravelDataTools\Resolvers\DeferredAttributeResolver;
 use Attribute;
 use Illuminate\Support\Collection;
 use Netsells\HashModelIds\ModelIdHasherInterface;

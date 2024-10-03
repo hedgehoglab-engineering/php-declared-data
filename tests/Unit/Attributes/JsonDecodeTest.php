@@ -2,7 +2,7 @@
 
 namespace HedgehoglabEngineering\Tests\Unit\Attributes;
 
-use HedgehoglabEngineering\LaravelDto\Attributes\JsonDecode;
+use HedgehoglabEngineering\LaravelDataTools\Attributes\JsonDecode;
 use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;

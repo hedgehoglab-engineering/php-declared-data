@@ -2,9 +2,9 @@
 
 namespace HedgehoglabEngineering\Tests\Unit\Attributes;
 
-use HedgehoglabEngineering\LaravelDto\Attributes\HashedIdOf;
-use HedgehoglabEngineering\LaravelDto\Attributes\HashedIdOfType;
-use HedgehoglabEngineering\LaravelDto\Resolvers\DeferredAttributeResolver;
+use HedgehoglabEngineering\LaravelDataTools\Attributes\HashedIdOf;
+use HedgehoglabEngineering\LaravelDataTools\Attributes\HashedIdOfType;
+use HedgehoglabEngineering\LaravelDataTools\Resolvers\DeferredAttributeResolver;
 use HedgehoglabEngineering\Tests\Fixtures\Models\TestModel;
 use Illuminate\Support\Collection;
 use Netsells\HashModelIds\ModelIdHasherInterface;

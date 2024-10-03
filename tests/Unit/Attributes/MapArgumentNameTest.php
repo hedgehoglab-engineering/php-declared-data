@@ -2,7 +2,7 @@
 
 namespace HedgehoglabEngineering\Tests\Unit\Attributes;
 
-use HedgehoglabEngineering\LaravelDto\Attributes\MapArgumentName;
+use HedgehoglabEngineering\LaravelDataTools\Attributes\MapArgumentName;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 

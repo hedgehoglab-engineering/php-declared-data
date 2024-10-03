@@ -1,6 +1,6 @@
 <?php
 
-namespace HedgehoglabEngineering\LaravelDto\Behaviours;
+namespace HedgehoglabEngineering\LaravelDataTools\Behaviours;
 
 use Illuminate\Support\Collection;
 

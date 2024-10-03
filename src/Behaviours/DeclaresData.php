@@ -1,8 +1,8 @@
 <?php
 
-namespace HedgehoglabEngineering\LaravelDto\Behaviours;
+namespace HedgehoglabEngineering\LaravelDataTools\Behaviours;
 
-use HedgehoglabEngineering\LaravelDto\Factories\SparseDataFactory;
+use HedgehoglabEngineering\LaravelDataTools\Factories\SparseDataFactory;
 
 trait DeclaresData
 {

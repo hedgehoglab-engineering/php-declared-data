@@ -1,8 +1,8 @@
 <?php
 
-namespace HedgehoglabEngineering\LaravelDto\Behaviours;
+namespace HedgehoglabEngineering\LaravelDataTools\Behaviours;
 
-use HedgehoglabEngineering\LaravelDto\Factories\DataFactory;
+use HedgehoglabEngineering\LaravelDataTools\Factories\DataFactory;
 
 trait CreatesData
 {

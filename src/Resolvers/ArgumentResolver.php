@@ -1,6 +1,6 @@
 <?php
 
-namespace HedgehoglabEngineering\LaravelDto\Resolvers;
+namespace HedgehoglabEngineering\LaravelDataTools\Resolvers;
 
 use Illuminate\Support\Collection;
 
