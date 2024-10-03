@@ -28,7 +28,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "HedgehoglabEngineering\\LaravelDto\\Providers\\DtoToolsServiceProvider"
+                "HedgehoglabEngineering\\LaravelDto\\Providers\\LaravelDtoToolsServiceProvider"
             ]
         }
     }
