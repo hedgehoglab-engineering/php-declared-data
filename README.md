@@ -33,7 +33,7 @@ This package provides a set of tools to facilitate the creation and handling of 
 Install the package via Composer:
 
 ```bash
-composer require hedgehoglab-engineering/laravel-dto
+composer require hedgehoglab-engineering/php-declared-data
 ```
 
 ## Usage
