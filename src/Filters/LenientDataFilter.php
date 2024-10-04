@@ -1,6 +1,6 @@
 <?php
 
-namespace HedgehoglabEngineering\LaravelDataTools\Filters;
+namespace HedgehoglabEngineering\DeclaredData\Filters;
 
 use Illuminate\Support\Collection;
 

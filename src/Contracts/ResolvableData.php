@@ -1,6 +1,6 @@
 <?php
 
-namespace HedgehoglabEngineering\LaravelDataTools\Contracts;
+namespace HedgehoglabEngineering\DeclaredData\Contracts;
 
 interface ResolvableData
 {

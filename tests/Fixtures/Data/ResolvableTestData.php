@@ -3,13 +3,13 @@
 namespace HedgehoglabEngineering\Tests\Fixtures\Data;
 
 use DateTimeInterface;
-use HedgehoglabEngineering\LaravelDataTools\AbstractDeclaredData;
-use HedgehoglabEngineering\LaravelDataTools\Attributes\CollectionOf;
-use HedgehoglabEngineering\LaravelDataTools\Attributes\DateTimeFromFormat;
-use HedgehoglabEngineering\LaravelDataTools\Attributes\HashedIdOf;
-use HedgehoglabEngineering\LaravelDataTools\Attributes\JsonDecode;
-use HedgehoglabEngineering\LaravelDataTools\Attributes\MapArgumentName;
-use HedgehoglabEngineering\LaravelDataTools\Contracts\ResolvableData;
+use HedgehoglabEngineering\DeclaredData\AbstractDeclaredData;
+use HedgehoglabEngineering\DeclaredData\Attributes\CollectionOf;
+use HedgehoglabEngineering\DeclaredData\Attributes\DateTimeFromFormat;
+use HedgehoglabEngineering\DeclaredData\Attributes\HashedIdOf;
+use HedgehoglabEngineering\DeclaredData\Attributes\JsonDecode;
+use HedgehoglabEngineering\DeclaredData\Attributes\MapArgumentName;
+use HedgehoglabEngineering\DeclaredData\Contracts\ResolvableData;
 use HedgehoglabEngineering\Tests\Fixtures\Models\TestModel;
 use Illuminate\Support\Collection;
 

@@ -1,7 +1,7 @@
 
-# Laravel Data Tools
+# PHP Declared Data
 
-This package provides a set of tools to facilitate the creation and handling of Data Transfer in Laravel applications. It offers attributes and interfaces that help in transforming, validating, and mapping data efficiently.
+This package provides a set of tools to facilitate the creation and handling of Data Transfer in PHP applications. It offers attributes and interfaces that help in transforming, validating, and mapping data efficiently.
 
 ## Table of Contents
 
@@ -43,7 +43,7 @@ composer require hedgehoglab-engineering/laravel-dto
 To create a data object, extend the `AbstractDeclaredData` class and define your properties. You can use PHP 8 attributes to specify transformations or mappings.
 
 ```php
-use HedgehoglabEngineering\LaravelDataTools\AbstractDeclaredData;
+use HedgehoglabEngineering\DeclaredData\AbstractDeclaredData;
 
 class UserData extends AbstractDeclaredData
 {
@@ -64,7 +64,7 @@ class UserData extends AbstractDeclaredData
 Implementing the `ResolvableData` interface allows the data object to resolve its own properties using the specified attributes.
 
 ```php
-use HedgehoglabEngineering\LaravelDataTools\Contracts\ResolvableData;
+use HedgehoglabEngineering\DeclaredData\Contracts\ResolvableData;
 
 class UserData extends AbstractDeclaredData implements ResolvableData
 {
@@ -77,7 +77,7 @@ class UserData extends AbstractDeclaredData implements ResolvableData
 The `LenientData` interface makes the data object lenient by ignoring extra properties that are not defined in the class.
 
 ```php
-use HedgehoglabEngineering\LaravelDataTools\Contracts\LenientData;
+use HedgehoglabEngineering\DeclaredData\Contracts\LenientData;
 
 class UserData extends AbstractDeclaredData implements LenientData
 {
@@ -90,7 +90,7 @@ class UserData extends AbstractDeclaredData implements LenientData
 The `SparseData` interface allows the data object to be instantiated without all required properties. Missing properties remain unset or `null`.
 
 ```php
-use HedgehoglabEngineering\LaravelDataTools\Contracts\SparseData;
+use HedgehoglabEngineering\DeclaredData\Contracts\SparseData;
 
 class UserData extends AbstractDeclaredData implements SparseData
 {
@@ -105,7 +105,7 @@ class UserData extends AbstractDeclaredData implements SparseData
 The `FromValidatedData` trait provides a `fromValidatedData` method to create an instance of the data from validated input data.
 
 ```php
-use HedgehoglabEngineering\LaravelDataTools\Traits\FromValidatedData;
+use HedgehoglabEngineering\DeclaredData\Traits\FromValidatedData;
 
 class UserData extends AbstractDeclaredData
 {
@@ -122,7 +122,7 @@ class UserData extends AbstractDeclaredData
 Transforms an array into a `Collection` of specified data.
 
 ```php
-use HedgehoglabEngineering\LaravelDataTools\Attributes\CollectionOf;
+use HedgehoglabEngineering\DeclaredData\Attributes\CollectionOf;
 
 #[CollectionOf(class: PostData::class)]
 public readonly Collection $posts;
@@ -133,7 +133,7 @@ public readonly Collection $posts;
 Parses a date string into a `DateTime` object using a specified format and timezones.
 
 ```php
-use HedgehoglabEngineering\LaravelDataTools\Attributes\DateTimeFromFormat;
+use HedgehoglabEngineering\DeclaredData\Attributes\DateTimeFromFormat;
 
 #[DateTimeFromFormat('Y-m-d', 'UTC', 'America/New_York')]
 public readonly DateTimeInterface $publishedAt;
@@ -144,7 +144,7 @@ public readonly DateTimeInterface $publishedAt;
 Decodes a JSON string into a PHP array or object.
 
 ```php
-use HedgehoglabEngineering\LaravelDataTools\Attributes\JsonDecode;
+use HedgehoglabEngineering\DeclaredData\Attributes\JsonDecode;
 
 #[JsonDecode(associative: true)]
 public readonly array $settings;
@@ -155,7 +155,7 @@ public readonly array $settings;
 Maps an input field name to a different property name in the data object.
 
 ```php
-use HedgehoglabEngineering\LaravelDataTools\Attributes\MapArgumentName;
+use HedgehoglabEngineering\DeclaredData\Attributes\MapArgumentName;
 
 #[MapArgumentName(name: 'first_name')]
 public string $firstName;
@@ -166,7 +166,7 @@ public string $firstName;
 Decodes a hashed ID into the original ID using the specified model class. See [Hash Model Ids](https://github.com/netsells/hash-model-ids) for more info.
 
 ```php
-use HedgehoglabEngineering\LaravelDataTools\Attributes\HashedIdOf;
+use HedgehoglabEngineering\DeclaredData\Attributes\HashedIdOf;
 
 #[HashedIdOf(User::class)]
 public readonly int $userId;
@@ -179,13 +179,13 @@ public readonly int $userId;
 Here's an example of a data class using various attributes:
 
 ```php
-use HedgehoglabEngineering\LaravelDataTools\AbstractDeclaredData;
-use HedgehoglabEngineering\LaravelDataTools\Contracts\ResolvableData;
-use HedgehoglabEngineering\LaravelDataTools\Attributes\CollectionOf;
-use HedgehoglabEngineering\LaravelDataTools\Attributes\DateTimeFromFormat;
-use HedgehoglabEngineering\LaravelDataTools\Attributes\JsonDecode;
-use HedgehoglabEngineering\LaravelDataTools\Attributes\MapArgumentName;
-use HedgehoglabEngineering\LaravelDataTools\Attributes\HashedIdOf;
+use HedgehoglabEngineering\DeclaredData\AbstractDeclaredData;
+use HedgehoglabEngineering\DeclaredData\Contracts\ResolvableData;
+use HedgehoglabEngineering\DeclaredData\Attributes\CollectionOf;
+use HedgehoglabEngineering\DeclaredData\Attributes\DateTimeFromFormat;
+use HedgehoglabEngineering\DeclaredData\Attributes\JsonDecode;
+use HedgehoglabEngineering\DeclaredData\Attributes\MapArgumentName;
+use HedgehoglabEngineering\DeclaredData\Attributes\HashedIdOf;
 use Illuminate\Support\Collection;
 
 class PostData extends AbstractDeclaredData implements ResolvableData

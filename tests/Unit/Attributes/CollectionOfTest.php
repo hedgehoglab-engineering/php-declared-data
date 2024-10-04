@@ -2,7 +2,7 @@
 
 namespace HedgehoglabEngineering\Tests\Unit\Attributes;
 
-use HedgehoglabEngineering\LaravelDataTools\Attributes\CollectionOf;
+use HedgehoglabEngineering\DeclaredData\Attributes\CollectionOf;
 use HedgehoglabEngineering\Tests\Fixtures\Enums\TestEnum;
 use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\DataProvider;

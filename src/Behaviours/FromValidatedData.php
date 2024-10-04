@@ -1,8 +1,8 @@
 <?php
 
-namespace HedgehoglabEngineering\LaravelDataTools\Behaviours;
+namespace HedgehoglabEngineering\DeclaredData\Behaviours;
 
-use HedgehoglabEngineering\LaravelDataTools\Contracts\CreatableData;
+use HedgehoglabEngineering\DeclaredData\Contracts\CreatableData;
 use Illuminate\Support\ValidatedInput;
 
 trait FromValidatedData

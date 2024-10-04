@@ -2,12 +2,12 @@
 
 namespace HedgehoglabEngineering\Tests\Fixtures\Data;
 
-use HedgehoglabEngineering\LaravelDataTools\AbstractDeclaredData;
-use HedgehoglabEngineering\LaravelDataTools\Attributes\MapArgumentName;
-use HedgehoglabEngineering\LaravelDataTools\Behaviours\FromValidatedData;
-use HedgehoglabEngineering\LaravelDataTools\Contracts\LenientData;
-use HedgehoglabEngineering\LaravelDataTools\Contracts\ResolvableData;
-use HedgehoglabEngineering\LaravelDataTools\Contracts\SparseData;
+use HedgehoglabEngineering\DeclaredData\AbstractDeclaredData;
+use HedgehoglabEngineering\DeclaredData\Attributes\MapArgumentName;
+use HedgehoglabEngineering\DeclaredData\Behaviours\FromValidatedData;
+use HedgehoglabEngineering\DeclaredData\Contracts\LenientData;
+use HedgehoglabEngineering\DeclaredData\Contracts\ResolvableData;
+use HedgehoglabEngineering\DeclaredData\Contracts\SparseData;
 
 class FromValidatedTestData extends AbstractDeclaredData implements ResolvableData, LenientData, SparseData
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace HedgehoglabEngineering\LaravelDataTools\Factories;
+namespace HedgehoglabEngineering\DeclaredData\Factories;
 
 class SparseDataFactory
 {

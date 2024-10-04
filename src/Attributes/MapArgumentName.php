@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HedgehoglabEngineering\LaravelDataTools\Attributes;
+namespace HedgehoglabEngineering\DeclaredData\Attributes;
 
 use Attribute;
 

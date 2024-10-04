@@ -1,9 +1,9 @@
 <?php
 
-namespace HedgehoglabEngineering\LaravelDataTools\Attributes;
+namespace HedgehoglabEngineering\DeclaredData\Attributes;
 
-use HedgehoglabEngineering\LaravelDataTools\Contracts\CollectableData;
-use HedgehoglabEngineering\LaravelDataTools\Contracts\ResolvableDataAttributeInterface;
+use HedgehoglabEngineering\DeclaredData\Contracts\CollectableData;
+use HedgehoglabEngineering\DeclaredData\Contracts\ResolvableDataAttributeInterface;
 use Attribute;
 use Illuminate\Support\Collection;
 

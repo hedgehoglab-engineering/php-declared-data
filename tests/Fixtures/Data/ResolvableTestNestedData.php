@@ -2,8 +2,8 @@
 
 namespace HedgehoglabEngineering\Tests\Fixtures\Data;
 
-use HedgehoglabEngineering\LaravelDataTools\AbstractDeclaredData;
-use HedgehoglabEngineering\LaravelDataTools\Contracts\ResolvableData;
+use HedgehoglabEngineering\DeclaredData\AbstractDeclaredData;
+use HedgehoglabEngineering\DeclaredData\Contracts\ResolvableData;
 
 class ResolvableTestNestedData extends AbstractDeclaredData implements ResolvableData
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace HedgehoglabEngineering\LaravelDataTools\Resolvers;
+namespace HedgehoglabEngineering\DeclaredData\Resolvers;
 
-use HedgehoglabEngineering\LaravelDataTools\Contracts\CreatableData;
+use HedgehoglabEngineering\DeclaredData\Contracts\CreatableData;
 
 class PropertyTypeResolver
 {

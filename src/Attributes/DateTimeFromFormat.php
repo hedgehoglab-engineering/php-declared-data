@@ -1,8 +1,8 @@
 <?php
 
-namespace HedgehoglabEngineering\LaravelDataTools\Attributes;
+namespace HedgehoglabEngineering\DeclaredData\Attributes;
 
-use HedgehoglabEngineering\LaravelDataTools\Contracts\ResolvableDataAttributeInterface;
+use HedgehoglabEngineering\DeclaredData\Contracts\ResolvableDataAttributeInterface;
 use Attribute;
 use Carbon\Carbon;
 use DateTimeZone;
