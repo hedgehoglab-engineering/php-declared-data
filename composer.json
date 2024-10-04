@@ -1,0 +1,27 @@
+{
+    "name": "hedgehoglab-engineering/php-declared-data",
+    "description": "A set of data tools for PHP.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "HedgehoglabEngineering\\DeclaredData\\": "src/",
+            "HedgehoglabEngineering\\Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "illuminate/support": "^9.1 || ^10.0",
+        "php": "^8.2"
+    },
+    "require-dev": {
+        "mockery/mockery": "^1.5",
+        "netsells/code-standards-laravel": "^1.1",
+        "phpunit/phpunit": "^10.0"
+    },
+    "scripts": {
+        "format": "php-cs-fixer fix src && php-cs-fixer fix tests",
+        "analyse": "phpstan analyse src tests",
+        "test": "phpunit"
+    }
+}
