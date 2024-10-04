@@ -11,8 +11,7 @@
     },
     "minimum-stability": "stable",
     "require": {
-        "laravel/framework": "^9.1 || ^10.0",
-        "netsells/hash-model-ids": "^1.1",
+        "illuminate/support": "^9.1 || ^10.0",
         "php": "^8.2"
     },
     "require-dev": {
