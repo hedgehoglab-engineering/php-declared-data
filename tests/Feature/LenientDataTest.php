@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace HedgehoglabEngineering\Tests\Feature;
 
 use HedgehoglabEngineering\Tests\Fixtures\Data\LenientTestData;

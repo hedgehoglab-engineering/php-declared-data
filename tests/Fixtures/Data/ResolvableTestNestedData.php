@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace HedgehoglabEngineering\Tests\Fixtures\Data;
 
 use HedgehoglabEngineering\DeclaredData\AbstractDeclaredData;

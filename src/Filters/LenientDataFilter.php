@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace HedgehoglabEngineering\DeclaredData\Filters;
 
 use Illuminate\Support\Collection;
