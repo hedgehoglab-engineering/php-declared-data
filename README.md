@@ -1,25 +1,31 @@
 
-# PHP Declared Data
+PHP Declared Data
+=================
 
-This package provides a set of tools to facilitate the creation and handling of Data Transfer in PHP applications. It offers attributes and interfaces that help in transforming, validating, and mapping data efficiently.
+This package provides attributes, contracts, and behaviors that simplify the creation and management of data classes in PHP applications.
+
+In particular, it enables the use of sparse objects that can be hydrated from optional data submitted via PATCH requests in a RESTful API, allowing missing or nullable fields to be handled appropriately.
+
 
 ## Table of Contents
 
 - [Installation](#installation)
 - [Usage](#usage)
-    - [Creating Data Classes](#creating-data-classes)
+    - [Defining Data Classes](#defining-data-classes)
     - [Interfaces](#interfaces)
         - [ResolvableData](#resolvabledata)
         - [LenientData](#lenientdata)
         - [SparseData](#sparsedata)
     - [Traits](#traits)
-        - [FromValidatedData](#fromvalidateddata)
+        - [ArraysData](#arraysdata)
+        - [CollectsData](#collectsdata)
+        - [CreatesData](#createsdata)
+        - [DeclaresData](#declaresdata)
     - [Attributes](#attributes)
         - [CollectionOf](#collectionof)
         - [DateTimeFromFormat](#datetimefromformat)
         - [JsonDecode](#jsondecode)
         - [MapArgumentName](#mapargumentname)
-        - [HashedIdOf](#hashedidof)
 - [Examples](#examples)
     - [Using Attributes in Data Classes](#using-attributes-in-data-classes)
 
@@ -27,6 +33,7 @@ This package provides a set of tools to facilitate the creation and handling of 
 - [Code Formatting](#code-formatting)
 - [Code Analysing](#code-analysing)
 - [Contributing](#contributing)
+
 
 ## Installation
 
@@ -36,11 +43,13 @@ Install the package via Composer:
 composer require hedgehoglab-engineering/php-declared-data
 ```
 
+
 ## Usage
 
-### Creating Data Classes
 
-To create a data object, extend the `AbstractDeclaredData` class and define your properties. You can use PHP 8 attributes to specify transformations or mappings.
+### Defining Data Classes
+
+The easiest way to start to define a declared data object is to extend the `AbstractDeclaredData` class. Alternatively, you can compose your own using the provided contracts and traits. Then just define your properties in the constructor.
 
 ```php
 use HedgehoglabEngineering\DeclaredData\AbstractDeclaredData;
@@ -57,11 +66,15 @@ class UserData extends AbstractDeclaredData
 }
 ```
 
+
 ### Interfaces
+
+Interfaces define behaviors that can be implemented by data classes for different functionality.
+
 
 #### ResolvableData
 
-Implementing the `ResolvableData` interface allows the data object to resolve its own properties using the specified attributes.
+Implementing the `ResolvableData` interface allows a class to resolve its properties using the specified property type or a PHP 8 attribute.
 
 ```php
 use HedgehoglabEngineering\DeclaredData\Contracts\ResolvableData;
@@ -72,9 +85,10 @@ class UserData extends AbstractDeclaredData implements ResolvableData
 }
 ```
 
+
 #### LenientData
 
-The `LenientData` interface makes the data object lenient by ignoring extra properties that are not defined in the class.
+The `LenientData` interface allows the data object to ignore extra properties that are not defined in the class.
 
 ```php
 use HedgehoglabEngineering\DeclaredData\Contracts\LenientData;
@@ -85,9 +99,10 @@ class UserData extends AbstractDeclaredData implements LenientData
 }
 ```
 
+
 #### SparseData
 
-The `SparseData` interface allows the data object to be instantiated without all required properties. Missing properties remain unset or `null`.
+The `SparseData` interface allows the data object to be instantiated without all required properties. The primary use case for this is transforming PATCH request data where missing properties without defaults may remain unset - i.e.: indicating that the field's value is not being modified.
 
 ```php
 use HedgehoglabEngineering\DeclaredData\Contracts\SparseData;
@@ -98,28 +113,40 @@ class UserData extends AbstractDeclaredData implements SparseData
 }
 ```
 
+
 ### Traits
 
-#### FromValidatedData
+Traits provide reusable functionality that can be applied to your data classes.
 
-The `FromValidatedData` trait provides a `fromValidatedData` method to create an instance of the data from validated input data.
 
-```php
-use HedgehoglabEngineering\DeclaredData\Traits\FromValidatedData;
+#### ArraysData
 
-class UserData extends AbstractDeclaredData
-{
-    use FromValidatedData;
+The `ArraysData` trait provides a `toArray` method to recursively convert a data instance into an array.
 
-    // ...
-}
-```
+
+#### CollectsData
+
+The `CollectsData` trait provides a static `collect` method which can convert an iterable value into a `Illuminate\Support\Collection` of instances of the defined class.
+
+
+#### CreatesData
+
+The `CreatesData` trait provides a static `create` method which can convert data into an instance of the defined class.
+
+
+#### DeclaresData
+
+The `DeclaresData` trait provides `has`, `missing`, `only` and `except` methods, which are useful for handling instances of declared data.
+
 
 ### Attributes
 
+The use of PHP attributes provides a mechanism for hinting how properties should be resolved.
+
+
 #### CollectionOf
 
-Transforms an array into a `Collection` of specified data.
+Transforms an array into an instance of `Illuminate\Support\Collection` containing instances of the specified class.
 
 ```php
 use HedgehoglabEngineering\DeclaredData\Attributes\CollectionOf;
@@ -128,16 +155,18 @@ use HedgehoglabEngineering\DeclaredData\Attributes\CollectionOf;
 public readonly Collection $posts;
 ```
 
+
 #### DateTimeFromFormat
 
-Parses a date string into a `DateTime` object using a specified format and timezones.
+Parses a date string into a `DateTime` object using a specified format and/or timezone.
 
 ```php
 use HedgehoglabEngineering\DeclaredData\Attributes\DateTimeFromFormat;
 
-#[DateTimeFromFormat('Y-m-d', 'UTC', 'America/New_York')]
+#[DateTimeFromFormat(format: 'Y-m-d', timezone: 'UTC', toTimezone: 'America/New_York')]
 public readonly DateTimeInterface $publishedAt;
 ```
+
 
 #### JsonDecode
 
@@ -150,6 +179,7 @@ use HedgehoglabEngineering\DeclaredData\Attributes\JsonDecode;
 public readonly array $settings;
 ```
 
+
 #### MapArgumentName
 
 Maps an input field name to a different property name in the data object.
@@ -161,18 +191,9 @@ use HedgehoglabEngineering\DeclaredData\Attributes\MapArgumentName;
 public string $firstName;
 ```
 
-#### HashedIdOf
-
-Decodes a hashed ID into the original ID using the specified model class. See [Hash Model Ids](https://github.com/netsells/hash-model-ids) for more info.
-
-```php
-use HedgehoglabEngineering\DeclaredData\Attributes\HashedIdOf;
-
-#[HashedIdOf(User::class)]
-public readonly int $userId;
-```
 
 ## Examples
+
 
 ### Using Attributes in Data Classes
 
@@ -185,7 +206,6 @@ use HedgehoglabEngineering\DeclaredData\Attributes\CollectionOf;
 use HedgehoglabEngineering\DeclaredData\Attributes\DateTimeFromFormat;
 use HedgehoglabEngineering\DeclaredData\Attributes\JsonDecode;
 use HedgehoglabEngineering\DeclaredData\Attributes\MapArgumentName;
-use HedgehoglabEngineering\DeclaredData\Attributes\HashedIdOf;
 use Illuminate\Support\Collection;
 
 class PostData extends AbstractDeclaredData implements ResolvableData
@@ -196,9 +216,6 @@ class PostData extends AbstractDeclaredData implements ResolvableData
 
         #[DateTimeFromFormat('Y-m-d H:i:s')]
         public DateTimeInterface $createdAt,
-
-        #[HashedIdOf(User::class)]
-        public int $authorId,
 
         #[JsonDecode(associative: true)]
         public array $metadata,
@@ -213,15 +230,15 @@ class PostData extends AbstractDeclaredData implements ResolvableData
 $inputData = [
     'post_title' => 'Test Post',
     'createdAt' => '2023-10-01 12:00:00',
-    'authorId' => 'hashed_123',
     'metadata' => '{"views": 100, "likes": 10}',
     'comments' => [
-        ['content' => 'Great post!', 'user_id' => 'hashed_456'],
+        ['content' => 'Great post!'],
     ],
 ];
 
 $resolvedPostData = PostData::create($inputData);
 ```
+
 
 ## Testing
 
@@ -229,17 +246,20 @@ $resolvedPostData = PostData::create($inputData);
 composer test
 ```
 
+
 ## Code Formatting
 
 ```bash
 composer format
 ```
 
+
 ## Code Analysing
 
 ```bash
 composer analyse
 ```
+
 
 ## Contributing
 
