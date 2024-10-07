@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HedgehoglabEngineering\DeclaredData\Resolvers\Strategy;
 
-use App\Support\Data\Contracts\CreatableData;
+use HedgehoglabEngineering\DeclaredData\Contracts\CreatableData;
 
 class CreatableDataResolver extends AbstractTypeResolver
 {
@@ -15,7 +15,7 @@ class CreatableDataResolver extends AbstractTypeResolver
 
     public function resolve(mixed $value): mixed
     {
-        /** @var \App\Support\Data\Contracts\CreatableData $type */
+        /** @var CreatableData $type */
         $type = $this->type;
 
         try {
