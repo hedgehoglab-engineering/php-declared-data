@@ -15,7 +15,7 @@ class CreatableDataResolver extends AbstractTypeResolver
 
     public function resolve(mixed $value): mixed
     {
-        /** @var CreatableData $type */
+        /** @var \HedgehoglabEngineering\DeclaredData\Contracts\CreatableData $type */
         $type = $this->type;
 
         try {
