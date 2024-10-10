@@ -1,9 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace HedgehoglabEngineering\DeclaredData\Attributes;
 
-use HedgehoglabEngineering\DeclaredData\Contracts\ResolvableDataAttributeInterface;
 use Attribute;
+use HedgehoglabEngineering\DeclaredData\Contracts\ResolvableDataAttributeInterface;
 use Illuminate\Support\Collection;
 
 #[Attribute(Attribute::TARGET_PROPERTY)]

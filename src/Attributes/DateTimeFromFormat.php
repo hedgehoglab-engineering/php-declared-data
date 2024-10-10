@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace HedgehoglabEngineering\DeclaredData\Attributes;
 
-use HedgehoglabEngineering\DeclaredData\Contracts\ResolvableDataAttributeInterface;
 use Attribute;
 use Carbon\Carbon;
 use DateTimeZone;
+use HedgehoglabEngineering\DeclaredData\Contracts\ResolvableDataAttributeInterface;
 use Illuminate\Support\Collection;
 
 #[Attribute(Attribute::TARGET_PROPERTY)]

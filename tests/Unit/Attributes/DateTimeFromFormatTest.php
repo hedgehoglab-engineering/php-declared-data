@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace HedgehoglabEngineering\Tests\Unit\Attributes;
 
 use Carbon\Carbon;

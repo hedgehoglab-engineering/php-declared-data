@@ -1,12 +1,14 @@
 <?php
 
-namespace HedgehoglabEngineering\DeclaredData\Resolvers;
+declare(strict_types=1);
 
-use HedgehoglabEngineering\DeclaredData\Contracts\CreatableData;
+namespace HedgehoglabEngineering\DeclaredData\Resolvers;
 
 class PropertyTypeResolver
 {
     private static array $cache = [];
+
+    private static array $resolvers = [];
 
     public static function resolve(\ReflectionProperty $property, mixed $value): mixed
     {
@@ -21,33 +23,35 @@ class PropertyTypeResolver
 
     private function resolveValue(mixed $value): mixed
     {
-        $typeNames = $this->getPropertyTypeNames();
-
-        if (! $typeNames) {
+        if (! $types = $this->getPropertyTypeNames()) {
             // the property is not typed, so we'll just return whatever it is
             return $value;
         }
 
-        if ($this->valueIsAlreadyTyped($value, $typeNames)) {
+        if ($this->valueIsAlreadyTyped($value, $types)) {
             return $value;
         }
 
-        // we're left with one or more types, so the first one to match will win
-        foreach ($typeNames as $typeName) {
-            if ($this->isCreatableData($typeName)) {
-                return $typeName::create($value);
-            }
-
-            if ($this->isDatetime($typeName)) {
-                return $this->resolveDateTime($value, $typeName);
-            }
-
-            if ($this->isEnum($typeName)) {
-                return $typeName::from($value);
+        foreach ($types as $type) {
+            try {
+                return $this->getResolver($type)->resolve($value);
+            } catch (Strategy\TypeResolverException) {
+                // we'll try to resolve each available type and, if none of them
+                // can be resolved, just let php throw a native type error
             }
         }
 
         return $value;
+    }
+
+    private function getResolver(string $type): Strategy\AbstractTypeResolver
+    {
+        return self::$resolvers[$type] ??= match (true) {
+            Strategy\CreatableDataResolver::resolvesType($type) => new Strategy\CreatableDataResolver($type),
+            Strategy\DateTimeResolver::resolvesType($type) => new Strategy\DateTimeResolver($type),
+            Strategy\BackedEnumResolver::resolvesType($type) => new Strategy\BackedEnumResolver($type),
+            default => new Strategy\DefaultTypeResolver($type),
+        };
     }
 
     private function valueIsAlreadyTyped(mixed $value, array $typeNames): bool
@@ -63,21 +67,6 @@ class PropertyTypeResolver
         }
 
         return false;
-    }
-
-    private function isCreatableData(string $typeName): bool
-    {
-        return is_a($typeName, CreatableData::class, true);
-    }
-
-    private function isDatetime(string $typeName): bool
-    {
-        return is_a($typeName, \DateTimeInterface::class, true);
-    }
-
-    private function isEnum(string $typeName): bool
-    {
-        return is_subclass_of($typeName, \BackedEnum::class);
     }
 
     /**
@@ -102,17 +91,5 @@ class PropertyTypeResolver
             fn (\ReflectionNamedType $type) => $type->getName(),
             $type instanceof \ReflectionNamedType ? [$type] : $type->getTypes()
         );
-    }
-
-    private function resolveDateTime(mixed $value, string $typeName): \DateTimeInterface
-    {
-        $value = \Carbon\Carbon::parse($value);
-
-        return match (true) {
-            is_a($typeName, \Carbon\CarbonImmutable::class, true) => $value->toImmutable(),
-            is_a($typeName, \Carbon\CarbonInterface::class, true) => $value,
-            is_a($typeName, \DateTimeImmutable::class, true) => $value->toDateTimeImmutable(),
-            default => $value->toDateTime(),
-        };
     }
 }

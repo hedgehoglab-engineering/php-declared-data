@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace HedgehoglabEngineering\DeclaredData;
 
 use HedgehoglabEngineering\DeclaredData\Behaviours\ArraysData;
